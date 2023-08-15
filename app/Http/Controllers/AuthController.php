@@ -27,7 +27,7 @@ class AuthController extends Controller
                 true, 
                 __('auth.success_create_user'),
                 ['token' => $token],
-                200
+                201
             );
         } 
         catch (\Throwable $th) 
