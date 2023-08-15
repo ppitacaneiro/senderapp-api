@@ -13,4 +13,9 @@ class Community extends Model
         'id',
         'name'
     ];
+
+    public function provinces() 
+    {
+        return $this->hasMany(Province::class);
+    }
 }

@@ -13,4 +13,9 @@ class Province extends Model
         'community_id',
         'name',
     ];
+
+    public function community() 
+    {
+        return $this->belongsTo(Community::class);
+    }
 }
