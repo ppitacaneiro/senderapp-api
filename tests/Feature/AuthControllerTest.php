@@ -8,7 +8,7 @@ use Tests\TestCase;
 
 class AuthControllerTest extends TestCase
 {
-    public function testUserRegisteredCanLoginWithSuccess()
+    public function test_user_registered_can_login_with_success()
     {
         $user = [
             'email' => 'pablo@example.com',
@@ -26,7 +26,7 @@ class AuthControllerTest extends TestCase
             ]);
     }
     
-    public function testUserNotRegisteredCanNotLoginWithSuccess()
+    public function test_user_not_registered_can_not_login_with_success()
     {
         $user = [
             'email' => 'juan@example.com',
@@ -37,7 +37,7 @@ class AuthControllerTest extends TestCase
             ->assertStatus(401);
     }
 
-    public function testRegisterWithSuccess()
+    public function test_register_with_success()
     {
         $user = [
             'name' => 'monica',
@@ -56,7 +56,7 @@ class AuthControllerTest extends TestCase
             ]);
     }
 
-    public function testRegisterWithInvalidUserData()
+    public function test_register_with_invalid_user_data()
     {
         $user = [
             'name' => '',

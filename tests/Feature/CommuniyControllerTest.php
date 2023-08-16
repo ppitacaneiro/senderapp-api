@@ -15,7 +15,7 @@ class CommuniyControllerTest extends TestCase
      *
      * @return void
      */
-    public function testCommunitiesEndpointResponseWithSuccess()
+    public function test_communities_endpoint_response_with_success()
     {
         Sanctum::actingAs(User::factory()->create());
         

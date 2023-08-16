@@ -15,12 +15,12 @@ class ProvinceControllerTest extends TestCase
      *
      * @return void
      */
-    public function testProvincesWithCommunityIdMustReturnCollection()
+    public function test_provinces_with_community_id_must_return_collection()
     {
         Sanctum::actingAs(User::factory()->create());
         $id = 12;
 
-        $this->json('GET', 'api/provinces/' . $id)
+        $response = $this->json('GET', 'api/provinces/' . $id)
             ->assertStatus(200)
             ->assertJson([
                 [
