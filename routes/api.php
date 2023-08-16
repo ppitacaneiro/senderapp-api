@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CommunityController;
+use App\Http\Controllers\MunicipalityController;
 use App\Http\Controllers\ProvinceController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -24,5 +25,6 @@ Route::middleware('auth:sanctum')->group(function() {
     
     Route::get('/communities',[CommunityController::class, 'index']);
     Route::get('/provinces/{idCommunity}',[ProvinceController::class, 'getProvincesByCommunityId']);
+    Route::get('/municipalities/{idProvince}',[MunicipalityController::class, 'getMunicipalitiesByProvinceId']);
 
 });
