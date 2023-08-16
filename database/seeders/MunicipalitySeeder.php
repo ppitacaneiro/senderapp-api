@@ -21,8 +21,6 @@ class MunicipalitySeeder extends Seeder
             DB::unprepared($sql);
         } 
         catch (\Exception $ex)
-        {
-            dd($ex->getMessage());
-        }
+        {}
     }
 }
