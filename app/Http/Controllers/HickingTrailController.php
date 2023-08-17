@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\HickingTrailPostRequest;
 use App\Models\HickingTrail;
 use Illuminate\Http\Request;
 
@@ -33,9 +34,9 @@ class HickingTrailController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(HickingTrailPostRequest $request)
     {
-        //
+        return response()->json(200);
     }
 
     /**
