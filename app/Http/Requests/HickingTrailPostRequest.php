@@ -36,27 +36,11 @@ class HickingTrailPostRequest extends FormRequest
             'origin_lat' => ['required','regex:/^-?([0-8]?[0-9]|90)(\.[0-9]{1,10})?$/'],
             'origin_lng' => ['required','regex:/^-?([0-9]{1,2}|1[0-7][0-9]|180)(\.[0-9]{1,10})$/'],
             'destination_name' => 'required',
-            'destination_lat' => 'required',
-            'destination_lng' => 'required',
-            'difficulty_level' => 'required',
+            'destination_lat' => ['required','regex:/^-?([0-8]?[0-9]|90)(\.[0-9]{1,10})?$/'],
+            'destination_lng' => ['required','regex:/^-?([0-9]{1,2}|1[0-7][0-9]|180)(\.[0-9]{1,10})$/'],
+            'difficulty_level' => ['required','in:facil,medio,dificil'],
         ];
     }
-
-    /*
-    'user_id' => 'required|exists:users,id',
-    'distance_kms' => 'required|numeric',
-    'time_minutes' => 'required|numeric',
-    'community_id' => 'required|exists:communities,id',
-    'province_id' => 'required|exists:provinces,id',
-    'municipaliy_id' => 'required|exists:municipalities,id',
-    'origin_name' => 'required',
-    'origin_lat' => 'required|regex:/^-?([0-8]?[0-9]|90)(\.[0-9]{1,10})?$',
-    'origin_lng' => 'required|regex:/^-?([0-9]{1,2}|1[0-7][0-9]|180)(\.[0-9]{1,10})$',
-    'destination_name' => 'required',
-    'destination_lat' => 'required|regex:/^-?([0-8]?[0-9]|90)(\.[0-9]{1,10})?$',
-    'destination_lng' => 'required|regex:/^-?([0-9]{1,2}|1[0-7][0-9]|180)(\.[0-9]{1,10})$',
-    'difficulty_level' => [new Enum(DifficultyLevel::class)],
-    */
 
     public function messages() 
     {
@@ -78,6 +62,13 @@ class HickingTrailPostRequest extends FormRequest
             'origin_lat.regex' => 'Debes indicar una latitud valida',
             'origin_lng.required' => 'Debes indicar una longitud',
             'origin_lng.regex' => 'Debes indicar una longitud valida',
+            'destination_name.required' => 'Debes indicar un destino de la ruta',
+            'destination_lat.required' => 'Debes indicar una latitud',
+            'destination_lat.regex' => 'Debes indicar una latitud valida',
+            'destination_lng.required' => 'Debes indicar una longitud',
+            'destination_lng.regex' => 'Debes indicar una longitud valida',
+            'difficulty_level.required' => 'Debes indicar un nivel de dificultad',
+            'difficulty_level.in' => 'Debes indicar un nivel de dificultad válido (facil,medio,dificil)',
         ];
     }
 }
