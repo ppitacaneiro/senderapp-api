@@ -28,7 +28,7 @@ class CreateHickingTrailsTable extends Migration
             $table->string('destination_name');
             $table->float('destination_lat',10,6);
             $table->float('destination_lng',10,6);
-            $table->enum('difficulty_level',['easy','medium','hard']);
+            $table->enum('difficulty_level',['facil','medio','dificil'])->default('medio');
             $table->timestamps();
         });
     }
