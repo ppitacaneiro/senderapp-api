@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\DifficultyLevel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -23,5 +24,8 @@ class HickingTrail extends Model
         'destination_lat',
         'destination_lng',
         'difficulty_level',
+    ];
+    protected $casts = [ 
+        'difficulty_level' => DifficultyLevel::class
     ];
 }
