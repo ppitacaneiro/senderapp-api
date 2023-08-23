@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\HickingTrailPostRequest;
+use App\Http\Resources\HickingTrailResource;
 use App\Models\HickingTrail;
 use App\Services\HickingTrailService;
 use Illuminate\Http\Request;
@@ -45,7 +46,7 @@ class HickingTrailController extends Controller
     {
         $hickingTrail = $this->hickingTrailService->create($request->validated());
 
-        return response()->json($hickingTrail);
+        return new HickingTrailResource($hickingTrail);
     }
 
     /**
