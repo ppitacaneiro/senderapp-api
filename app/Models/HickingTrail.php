@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Enums\DifficultyLevel;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class HickingTrail extends Model
 {
@@ -28,4 +29,9 @@ class HickingTrail extends Model
     protected $casts = [ 
         'difficulty_level' => DifficultyLevel::class
     ];
+
+    public function community() :BelongsTo
+    {
+        return $this->belongsTo(Community::class);
+    }
 }

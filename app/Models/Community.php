@@ -19,4 +19,9 @@ class Community extends Model
     {
         return $this->hasMany(Province::class);
     }
+
+    public function hickingtrails() :HasMany
+    {
+        return $this->hasMany(HickingTrail::class);
+    }
 }
