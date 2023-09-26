@@ -6,14 +6,20 @@ use App\Http\Requests\HickingTrailPostRequest;
 use App\Http\Resources\HickingTrailResource;
 use App\Models\HickingTrail;
 use App\Services\HickingTrailService;
+use App\Services\StepService;
 use Illuminate\Http\Request;
 
 class HickingTrailController extends Controller
 {
     private HickingTrailService $hickingTrailService;
-    public function __construct(HickingTrailService $hickingTrailService) 
+    private StepService $stepService;
+    public function __construct(
+        HickingTrailService $hickingTrailService,
+        StepService $stepService,
+    ) 
     {
         $this->hickingTrailService = $hickingTrailService;
+        $this->stepService = $stepService;
     }
 
     /**
@@ -27,16 +33,6 @@ class HickingTrailController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -45,6 +41,9 @@ class HickingTrailController extends Controller
     public function store(HickingTrailPostRequest $request)
     {
         $hickingTrail = $this->hickingTrailService->create($request->validated());
+        $steps = $request->get('steps');
+        // TODO: Make this in background
+        $this->stepService->storeSteps($steps, $hickingTrail->id);
 
         return new HickingTrailResource($hickingTrail);
     }
