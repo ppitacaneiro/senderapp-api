@@ -25,4 +25,9 @@ class Province extends Model
     {
         return $this->hasMany(Municipality::class);
     }
+
+    public function hickingtrails() :HasMany
+    {
+        return $this->hasMany(HickingTrail::class);
+    }
 }
