@@ -39,6 +39,9 @@ class HickingTrailPostRequest extends FormRequest
             'destination_lat' => ['required','regex:/^-?([0-8]?[0-9]|90)(\.[0-9]{1,10})?$/'],
             'destination_lng' => ['required','regex:/^-?([0-9]{1,2}|1[0-7][0-9]|180)(\.[0-9]{1,10})$/'],
             'difficulty_level' => ['required',new Enum(DifficultyLevel::class)],
+            'steps' => 'required|array',
+            'steps.*.lat' => ['required','regex:/^-?([0-8]?[0-9]|90)(\.[0-9]{1,10})?$/'],
+            'steps.*.lng' => ['required','regex:/^-?([0-9]{1,2}|1[0-7][0-9]|180)(\.[0-9]{1,10})$/'],
         ];
     }
 
@@ -68,6 +71,9 @@ class HickingTrailPostRequest extends FormRequest
             'destination_lng.required' => 'Debes indicar una longitud',
             'destination_lng.regex' => 'Debes indicar una longitud valida',
             'difficulty_level.required' => 'Debes indicar un nivel de dificultad válido',
+            'steps.required' => 'Debes indicar los pasos de la ruta',
+            'steps.*.lat.required' => 'Debes indicar una latitud para el paso',
+            'steps.*.lat.regex' => 'Debes indicar una latitud valida para el paso',
         ];
     }
 }
