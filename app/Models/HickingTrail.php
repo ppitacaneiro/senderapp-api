@@ -44,4 +44,14 @@ class HickingTrail extends Model
     {
         return $this->belongsTo(Municipality::class);
     }
+
+    public function user() :BelongsTo
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function steps()
+    {
+        return $this->hasMany(Step::class);
+    }
 }
