@@ -31,7 +31,7 @@ class HickingTrailPostRequest extends FormRequest
             'time_minutes' => 'required|numeric',
             'community_id' => 'required|exists:communities,id',
             'province_id' => 'required|exists:provinces,id',
-            'municipaliy_id' => 'required|exists:municipalities,id',
+            'municipality_id' => 'required|exists:municipalities,id',
             'origin_name' => 'required',
             'origin_lat' => ['required','regex:/^-?([0-8]?[0-9]|90)(\.[0-9]{1,10})?$/'],
             'origin_lng' => ['required','regex:/^-?([0-9]{1,2}|1[0-7][0-9]|180)(\.[0-9]{1,10})$/'],

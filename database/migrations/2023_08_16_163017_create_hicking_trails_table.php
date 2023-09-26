@@ -21,7 +21,7 @@ class CreateHickingTrailsTable extends Migration
             $table->integer('time_minutes');
             $table->foreignId('community_id')->references('id')->on('communities');
             $table->foreignId('province_id')->references('id')->on('provinces');
-            $table->foreignId('municipaliy_id')->references('id')->on('municipalities');
+            $table->foreignId('municipality_id')->references('id')->on('municipalities');
             $table->string('origin_name');
             $table->float('origin_lat',10,6);
             $table->float('origin_lng',10,6);

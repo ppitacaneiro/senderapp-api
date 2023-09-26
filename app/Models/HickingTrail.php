@@ -17,7 +17,7 @@ class HickingTrail extends Model
         'time_minutes',
         'community_id',
         'province_id',
-        'municipaliy_id',
+        'municipality_id',
         'origin_name',
         'origin_lat',
         'origin_lng',
@@ -33,5 +33,15 @@ class HickingTrail extends Model
     public function community() :BelongsTo
     {
         return $this->belongsTo(Community::class);
+    }
+
+    public function province() :BelongsTo
+    {
+        return $this->belongsTo(Province::class);
+    }
+
+    public function municipality() :BelongsTo
+    {
+        return $this->belongsTo(Municipality::class);
     }
 }
