@@ -20,7 +20,16 @@ class HickingTrailResource extends JsonResource
             'id' => $this->id,
             'distance_kms' => $this->distance_kms,
             'time_minutes' => $this->time_minutes,
-            'community' => $this->community(),
+            'community' => $this->community()->get(),
+            'province' => $this->province()->get(),
+            'municipality' => $this->municipality()->get(),
+            "origin_name" => $this->origin_name,
+            "origin_lat" => $this->origin_lat,
+            "origin_lng" => $this->origin_lng,
+            "destination_name" => $this->destination_name,
+            "destination_lat" => $this->destination_lat,
+            "destination_lng" => $this->destination_lng,
+            "difficulty_level" => $this->difficulty_level,
         ];
     }
 }
