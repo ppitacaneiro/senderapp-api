@@ -42,6 +42,8 @@ class HickingTrailPostRequest extends FormRequest
             'steps' => 'required|array',
             'steps.*.lat' => ['required','regex:/^-?([0-8]?[0-9]|90)(\.[0-9]{1,10})?$/'],
             'steps.*.lng' => ['required','regex:/^-?([0-9]{1,2}|1[0-7][0-9]|180)(\.[0-9]{1,10})$/'],
+            'photos' => 'array',
+            // TODO: validate photos array
         ];
     }
 
