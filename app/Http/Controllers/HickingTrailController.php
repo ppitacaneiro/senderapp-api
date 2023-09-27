@@ -4,22 +4,22 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\HickingTrailPostRequest;
 use App\Http\Resources\HickingTrailResource;
+use App\Jobs\StoreHickingTrailSteps;
 use App\Models\HickingTrail;
 use App\Services\HickingTrailService;
+use App\Services\PhotoService;
 use App\Services\StepService;
 use Illuminate\Http\Request;
+use App\Jobs\StorePhotos;
+use Illuminate\Support\Facades\Bus;
 
 class HickingTrailController extends Controller
 {
     private HickingTrailService $hickingTrailService;
-    private StepService $stepService;
-    public function __construct(
-        HickingTrailService $hickingTrailService,
-        StepService $stepService,
-    ) 
+
+    public function __construct(HickingTrailService $hickingTrailService) 
     {
         $this->hickingTrailService = $hickingTrailService;
-        $this->stepService = $stepService;
     }
 
     /**
@@ -41,9 +41,11 @@ class HickingTrailController extends Controller
     public function store(HickingTrailPostRequest $request)
     {
         $hickingTrail = $this->hickingTrailService->create($request->validated());
-        $steps = $request->get('steps');
-        // TODO: Make this in background
-        $this->stepService->storeSteps($steps, $hickingTrail->id);
+        Bus::chain([
+            new StoreHickingTrailSteps($request->get('steps'), $hickingTrail->id),
+            new StorePhotos($request->get('photos'), $hickingTrail->id),
+            // TODO: send email to user
+        ])->dispatch();
 
         return new HickingTrailResource($hickingTrail);
     }
