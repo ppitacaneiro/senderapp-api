@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\HickingTrailPostRequest;
+use App\Http\Requests\HickinTrailSearchRequest;
 use App\Http\Resources\HickingTrailResource;
 use App\Jobs\StoreHickingTrailSteps;
 use App\Models\HickingTrail;
@@ -93,5 +94,20 @@ class HickingTrailController extends Controller
     public function destroy(HickingTrail $hickingTrail)
     {
         //
+    }
+
+    /**
+     * Search hicking trails by province, municipality, community or difficulty level
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function search(HickinTrailSearchRequest $request)
+    {
+        $hickingTrails = $this->hickingTrailService->search($request->validated());
+        
+        return response()->json([
+            'data' => HickingTrailResource::collection($hickingTrails)
+        ]);
     }
 }

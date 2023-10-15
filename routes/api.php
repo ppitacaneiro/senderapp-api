@@ -30,6 +30,7 @@ Route::middleware('auth:sanctum')->group(function() {
 
     Route::prefix('hicking_trails')->group(function() {
         Route::post('store',[HickingTrailController::class, 'store']);
+        Route::post('search',[HickingTrailController::class, 'search']);
     });
 
 });

@@ -6,3 +6,4 @@ enum DifficultyLevel: string
     case Medium = 'medio';
     case Hard = 'dificil';
 }
+
