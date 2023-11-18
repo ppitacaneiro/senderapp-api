@@ -20,5 +20,8 @@ class DatabaseSeeder extends Seeder
         $this->call(ProvinceSeeder::class);
         $this->call(MunicipalitySeeder::class);
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
+
+        // faker data
+        $this->call(HickingTrailSeeder::class);
     }
 }
