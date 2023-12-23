@@ -26,7 +26,7 @@ class HickinTrailSearchRequest extends FormRequest
     public function rules()
     {
         return [
-            'community_id' => 'exists:communities,id',
+            'community_id' => 'required|exists:communities,id',
             'province_id' => 'exists:provinces,id',
             'municipality_id' => 'exists:municipalities,id',
             'difficulty_level' => ['required',new Enum(DifficultyLevel::class)],
@@ -36,6 +36,7 @@ class HickinTrailSearchRequest extends FormRequest
     public function messages() 
     {
         return [
+            'community_id.required' => 'Debes indicar una comunidad',
             'community_id.exists' => 'La comunidad debe estar registrada',
             'province_id.exists' => 'La provincia debe estar registrada',
             'municipality_id.exists' => 'El municipio debe estar registrado',
