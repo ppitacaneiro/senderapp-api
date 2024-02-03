@@ -60,7 +60,10 @@ class AuthController extends Controller
             return new JsonApiResponse(
                 true, 
                 __('auth.success_login'),
-                ['token' => $token],
+                [
+                    'token' => $token,
+                    'user' => $user
+                ],
                 200
             );
         } catch (\Throwable $th) {
