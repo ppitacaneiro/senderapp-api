@@ -4,7 +4,7 @@ services:
     build:
       args:
         user: pablo
-        uid: 1000
+        uid: 1010
       context: ./
       dockerfile: Dockerfile
     image: senderadapt-api
