@@ -1,7 +1,7 @@
 FROM php:8.1-fpm
 
 # Arguments defined in docker-compose.yml
-ARG user
+ARG user = pablo
 ARG uid
 
 # Install system dependencies
